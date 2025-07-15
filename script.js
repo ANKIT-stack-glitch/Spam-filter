@@ -22,3 +22,10 @@ function isSpam(message) {
   return spamPatterns.some(pattern => pattern.test(message));
 }
 
+if (isSpam(message)) {
+  result.textContent = "🚨 Oh no! This looks like a spam message.";
+  result.style.color = "red";
+} else {
+  result.textContent = "✅ This message seems safe.";
+  result.style.color = "green";
+}
