@@ -29,3 +29,22 @@ if (isSpam(message)) {
   result.textContent = "✅ This message seems safe.";
   result.style.color = "green";
 }
+
+const spamPatterns = [
+  /free money/i,
+  /buy now/i,
+  /click here/i,
+  /subscribe/i,
+  /winner/i,
+  /congratulations/i,
+  /urgent/i,
+  /act now/i,
+  /limited time/i,
+  /make money fast/i,
+  /cheap/i,
+  /get rich/i,
+  /investment opportunity/i,
+  /no credit check/i,
+  /instant access/i,
+  /guaranteed/i
+];
