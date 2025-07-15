@@ -48,3 +48,12 @@ const spamPatterns = [
   /instant access/i,
   /guaranteed/i
 ];
+
+function highlightSpam(message) {
+  let highlighted = message;
+  spamPatterns.forEach(pattern => {
+    highlighted = highlighted.replace(pattern, match => `<mark>${match}</mark>`);
+  });
+  return highlighted;
+}
+
