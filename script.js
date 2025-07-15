@@ -57,3 +57,18 @@ function highlightSpam(message) {
   return highlighted;
 }
 
+if (isSpam(message)) {
+  result.innerHTML = "🚨 <strong>Spam detected:</strong><br>" + highlightSpam(message);
+  result.style.color = "red";
+}
+
+messageInput.addEventListener("input", () => {
+  result.textContent = "";
+  result.style.color = "black";
+});
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Enter" && e.ctrlKey) {
+    checkMessageButton.click();
+  }
+});
