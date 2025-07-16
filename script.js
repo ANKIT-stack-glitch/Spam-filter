@@ -29,3 +29,24 @@ const denyList = [
   bonusRegex,
   gibberishRegex,
 ];
+
+function sanitize(str) {
+  return str.replace(/[&<>"'`=\/]/g, (s) => ({
+    '&': "&amp;",
+    '<': "&lt;",
+    '>': "&gt;",
+    '"': "&quot;",
+    "'": "&#39;",
+    '`': "&#x60;",
+    '=': "&#x3D;",
+    '/': "&#x2F;",
+  }[s]));
+}
+
+function highlightSpam(msg) {
+  let safeMsg = sanitize(msg);
+  denyList.forEach((regex) => {
+    safeMsg = safeMsg.replace(regex, (match) => `<mark>${match}</mark>`);
+  });
+  return safeMsg;
+}
