@@ -75,3 +75,48 @@ checkMessageButton.addEventListener("click", () => {
   messageInput.value = "";
   checkMessageButton.disabled = false;
 });
+messageInput.addEventListener("input", () => {
+  result.textContent = "";
+}); 
+messageInput.addEventListener("focus", () => {
+  result.textContent = "";
+});
+messageInput.addEventListener("blur", () => {
+  if (messageInput.value.trim() === "") {
+    result.textContent = "Please enter a message to check for spam.";
+
+  }
+});
+messageInput.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    checkMessageButton.click();
+  }
+});
+messageInput.value = "";
+result.textContent = "Please enter a message to check for spam.";
+messageInput.focus();
+checkMessageButton.disabled = false;
+// Initial setup
+result.textContent = "Please enter a message to check for spam.";
+messageInput.value = "";
+messageInput.focus(); 
+checkMessageButton.disabled = false;
+// Add event listeners for input and focus
+messageInput.addEventListener("input", () => {
+  result.textContent = "";
+});
+messageInput.addEventListener("focus", () => {
+  result.textContent = "";
+});
+messageInput.addEventListener("blur", () => {
+  if (messageInput.value.trim() === "") {
+    result.textContent = "Please enter a message to check for spam.";
+  }
+});
+messageInput.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    checkMessageButton.click();
+  }
+});
