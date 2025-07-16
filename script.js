@@ -13,3 +13,19 @@ const clickRegex = /(?:^|\s)cl[i1|]ck h[e3]r[e3](?:$|\s)/i;
 const urgentRegex = /(?:^|\s)urg[e3]nt r[e3]sp[o0]ns[e3](?:$|\s)/i;
 const cheapRegex = /(?:^|\s)ch[e3][a@4]p d[e3][a@4]l(?:$|\s)/i;
 const bonusRegex = /(?:^|\s)b[o0]nus(?:$|\s)/i;
+
+const gibberishRegex = /\b[a-z]{15,}\b/i;
+
+const denyList = [
+  helpRegex,
+  dollarRegex,
+  freeRegex,
+  stockRegex,
+  dearRegex,
+  prizeRegex,
+  clickRegex,
+  urgentRegex,
+  cheapRegex,
+  bonusRegex,
+  gibberishRegex,
+];
