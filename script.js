@@ -50,3 +50,28 @@ function highlightSpam(msg) {
   });
   return safeMsg;
 }
+
+const isSpam = (msg) => denyList.some((regex) => regex.test(msg));
+
+checkMessageButton.addEventListener("click", () => {
+  let rawMsg = messageInput.value.trim();
+  if (rawMsg === "") {
+    alert("Please enter a message.");
+    return;
+  }
+  let normalizedMsg = rawMsg.replace(/\s+/g, " ");
+  checkMessageButton.disabled = true;
+  const matchedPatterns = denyList.filter((regex) => regex.test(normalizedMsg));
+  const spamDetected = matchedPatterns.length > 0;
+  if (spamDetected) {
+    result.innerHTML = `
+      <p>Oh no! This looks like a spam message.</p>
+      <p><strong>Matched spam patterns:</strong> ${matchedPatterns.length}</p>
+      <p>${highlightSpam(normalizedMsg)}</p>
+    `;
+  } else {
+    result.textContent = "This message does not seem to contain any spam.";
+  }
+  messageInput.value = "";
+  checkMessageButton.disabled = false;
+});
